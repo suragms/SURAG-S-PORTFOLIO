@@ -196,7 +196,7 @@ const About = () => {
               <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-32 text-blue-600 font-semibold">
-                    2022 – Present
+                    2023 – Present
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-xl font-semibold text-gray-900">Postgraduate Student – MCA</h3>
