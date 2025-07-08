@@ -25,6 +25,11 @@ This project leverages a modern, powerful tech stack:
 
 ---
 
+ # About Surag 
+ I’m Surag, a passionate full-stack developer and the founder of Surag Dev Studio.
+ With a focus on creating intuitive, performant, and scalable web applications, I blend creativity with technical expertise to solve real-world problems. 
+ My mission is to craft digital experiences that are both functional and delightful.
+
 ## 📂 Getting Started
 
 Follow the steps below to run this project locally.
@@ -68,16 +73,20 @@ An intelligent system that monitors stress using machine learning algorithms and
 
 🔗 GitHub Repo | 💻 Live Demo
 
-📬 Contact
-I’m always open to collaboration, freelance work, or a tech chat!
+ Get in Touch
 
-📧 Email: officialsurag@gmail.com
+ I’m always open to collaboration, feedback, or new opportunities. 
+ 
+ Connect with me: 
+ 
+Email: officialsurag@gmail.com (mailto:officialsurag@gmail.com)  
 
-💼 LinkedIn: linkedin.com/in/suragsunil
+LinkedIn: linkedin.com/in/suragsunil  
 
-🌐 Portfolio: linktr.ee/suragdevstudio
+Portfolio: linktr.ee/suragdevstudio  
 
-🐱 GitHub: github.com/suragms
+GitHub: github.com/suragms
+
 
 🤝 Contributing
 Contributions are welcome! Here’s how:
