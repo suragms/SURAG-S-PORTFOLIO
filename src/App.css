@@ -1,0 +1,98 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* LED lights animation */
+@keyframes led-fade {
+  0% { opacity: 0.4; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.4); }
+}
+
+/* Optionally, you can add a utility class if you want to use it elsewhere */
+.led-fade {
+  animation: led-fade 2.5s ease-in-out infinite alternate;
+}
+
+/* Animated gradient background for Welcome page */
+.animated-gradient-bg {
+  background: linear-gradient(120deg, #c3dafe, #e9d5ff, #f0abfc, #a5b4fc, #f3e8ff);
+  background-size: 200% 200%;
+  animation: gradient-move 8s ease-in-out infinite;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ambient LED lights animation */
+@keyframes ambient1 {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.08); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes ambient2 {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(40px) scale(1.1); }
+  100% { transform: translateX(0) scale(1); }
+}
+@keyframes ambient3 {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(25px) scale(0.95); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes ambient4 {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(-30px) scale(1.07); }
+  100% { transform: translateX(0) scale(1); }
+}
+.animate-ambient1 { animation: ambient1 10s ease-in-out infinite alternate; }
+.animate-ambient2 { animation: ambient2 14s ease-in-out infinite alternate; }
+.animate-ambient3 { animation: ambient3 12s ease-in-out infinite alternate; }
+.animate-ambient4 { animation: ambient4 16s ease-in-out infinite alternate; }
