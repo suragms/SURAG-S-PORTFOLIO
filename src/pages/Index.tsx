@@ -15,7 +15,7 @@ const Index = () => {
       // image: '/Stress.png',
       technologies: ['Django', 'scikit-learn', 'SQLite3', 'Rasa'],
       liveUrl: 'https://stress-detection-for-it-professionals.onrender.com',
-      sourceUrl: 'https://github.com/suragms/STRESS-DETECTION-FOR-IT-PROFESSIONALS.git'
+      sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your Stress Detection for IT Professionals project. Can you tell me more about it?'
     },
     {
       title: 'Enhanced Personal Finance Tracker',
@@ -24,7 +24,7 @@ const Index = () => {
       icon: '💰',
       technologies: ['Django', 'Bootstrap', 'Chart.js', 'SQLite3'],
       liveUrl: 'https://expensive-tracker-nahn.onrender.com',
-      sourceUrl: 'https://github.com/suragms/EXPENSIVE-TRACKER.git'
+      sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your Enhanced Personal Finance Tracker project. Can you tell me more about it?'
     },
     {
       title: 'Bounce Game',
@@ -32,7 +32,7 @@ const Index = () => {
       image: 'photo-1504608524841-42fe6f032b4b',
       technologies: ['React', 'Html5', 'JavaScript', 'CSS3'],
       liveUrl: 'https://bouncegame2025.netlify.app',
-      sourceUrl: 'https://github.com/suragms/Bounce-Game.git',
+      sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your Bounce Game – React Edition project. Can you tell me more about it?',
       icon: '🏀'
     }
   ];
