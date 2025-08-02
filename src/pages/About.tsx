@@ -17,10 +17,8 @@ const About = () => {
                   About Me
                 </h1>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Hello! I'm Surag M S, a passionate software developer and postgraduate student currently pursuing my Master of Computer Applications (MCA) at CCSIT Thalikulam, under Calicut University. I also hold a Bachelor's degree in Computer Applications (BCA) from SNGC Nattika.<br/><br/>
-                  With a strong foundation in programming, I specialize in full-stack web development using Python (Django) and JavaScript (React.js), along with a growing interest in Artificial Intelligence and Machine Learning. I'm the creator of Surag Dev Studio, where I showcase my learning journey through real-world projects and experiments in tech.<br/><br/>
-                  I'm the creator of Surag Dev Studio, where I showcase my personal projects, including AI-powered tools, full-stack web apps, and experimental UI/UX designs. I enjoy solving real-world problems through code and love building applications that combine functionality with modern aesthetics.<br/><br/>
-                  I aim to grow as a Full Stack Developer and AI/ML Engineer, with a focus on building intelligent web applications that make a real difference. I'm especially excited by the potential of combining React.js frontend interfaces with AI-driven backend systems to create highly interactive, real-time user experiences.
+                  Hi, I'm Surag M S, a PG MCA graduate and passionate Full Stack Developer with a strong foundation in programming and a growing interest in AI and Machine Learning. I specialize in building intelligent, modern web applications using Python (Django) for the backend and React.js for the frontend.<br/><br/>
+                  I'm the founder of Surag Dev Studio, where I explore and share my learning journey through real-world projects, including AI-powered tools, full-stack apps, and creative UI/UX designs. I love solving real-world problems with code and aim to build applications that are both functional and user-centric.
                 </p>
                 <div className="flex gap-6">
                   <div className="text-center">
@@ -196,13 +194,14 @@ const About = () => {
               <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-32 text-blue-600 font-semibold">
-                    2023 – Present
+                    2023 – 2025
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-xl font-semibold text-gray-900">Postgraduate Student – MCA</h3>
                     <p className="text-blue-600 font-medium mb-2">CCSIT Thalikulam, Calicut University</p>
                     <ul className="list-disc list-inside text-gray-600 space-y-1">
                       <li>Advanced coursework in AI, ML, Web Technologies, Data Science, Cryptography, Compiler Design, and more</li>
+                      <li>Specialization: Machine Learning & Data Science </li>
                       <li>Gained hands-on experience through academic mini-projects and major projects:</li>
                       <ul className="ml-6 list-[circle]">
                         <li>Stress Detection for IT Professionals</li>

@@ -14,7 +14,7 @@ const Index = () => {
       icon: '🧠',
       // image: '/Stress.png',
       technologies: ['Django', 'scikit-learn', 'SQLite3', 'Rasa'],
-      liveUrl: 'https://www.instagram.com/surag_sunil',
+      liveUrl: 'https://stress-detection-for-it-professionals.onrender.com',
       sourceUrl: 'https://github.com/suragms/STRESS-DETECTION-FOR-IT-PROFESSIONALS.git'
     },
     {
@@ -23,7 +23,7 @@ const Index = () => {
       image: 'photo-1611224923853-80b023f02d71',
       icon: '💰',
       technologies: ['Django', 'Bootstrap', 'Chart.js', 'SQLite3'],
-      liveUrl: 'https://www.instagram.com/surag_sunil',
+      liveUrl: 'https://expensive-tracker-nahn.onrender.com',
       sourceUrl: 'https://github.com/suragms/EXPENSIVE-TRACKER.git'
     },
     {
@@ -31,7 +31,7 @@ const Index = () => {
       description: 'A fun web-based bouncing ball game created as a learning project. Uses canvas animation, game logic, and responsive design techniques.',
       image: 'photo-1504608524841-42fe6f032b4b',
       technologies: ['React', 'Html5', 'JavaScript', 'CSS3'],
-      liveUrl: 'https://www.instagram.com/surag_sunil',
+      liveUrl: 'https://bouncegame2025.netlify.app',
       sourceUrl: 'https://github.com/suragms/Bounce-Game.git',
       icon: '🏀'
     }

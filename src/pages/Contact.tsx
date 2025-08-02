@@ -123,12 +123,81 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Let's work together Card */}
+              {/* Let's work together Card with LinkedIn Integration */}
               <div className="flex flex-col justify-center bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-10 text-white shadow-lg border border-blue-400 h-full min-h-[400px]">
                 <h3 className="text-2xl font-bold mb-4">Let's work together!</h3>
                 <p className="mb-6 text-lg">
                   I'm currently available for freelance work and full-time opportunities. If you have a project in mind or want to discuss potential collaboration, don't hesitate to reach out.
                 </p>
+                
+                {/* LinkedIn Profile Card - Authentic LinkedIn Style */}
+                <div className="mb-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden">
+                  {/* Profile Content (no banner) */}
+                  <div className="p-6 flex flex-col items-center">
+                    {/* Profile Picture */}
+                    <div className="mb-4">
+                      <img 
+                        src="https://media.licdn.com/dms/image/v2/D5603AQGfl_w7HEkPFQ/profile-displayphoto-scale_400_400/B56ZgmrzbAG0Ag-/0/1752995676420?e=1756944000&v=beta&t=L_a1anZ2TeIe0W3YEFy-s01wPJsO3CuNJscf7A0ATig"
+                        alt="Surag M S LinkedIn Profile"
+                        className="w-24 h-24 rounded-full border-4 border-white shadow-lg object-cover"
+                      />
+                    </div>
+                    
+                    {/* Profile Info */}
+                    <div className="mb-4">
+                      <div className="flex items-center mb-2">
+                        <h3 className="text-xl font-bold text-white mr-2">Surag M S</h3>
+                        <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                          </svg>
+                        </div>
+                        <span className="text-white/70 text-sm ml-2">He/Him</span>
+                        {/* LinkedIn Premium Badge */}
+                        <div className="ml-2 bg-gradient-to-r from-amber-400 to-yellow-500 rounded px-2 py-1 flex items-center">
+                          <div className="w-3 h-3 bg-white rounded-sm mr-1 flex items-center justify-center">
+                            <span className="text-amber-600 text-xs font-bold">in</span>
+                          </div>
+                          <span className="text-white text-xs font-semibold">Premium</span>
+                        </div>
+                      </div>
+                      
+                      <p className="text-white/90 text-sm mb-2">
+                        Full Stack Developer | AI/ML Enthusiast | Founder – Stress Detection for IT Professionals | PG MCA – Calicut University | Python • Django • React • scikit-learn • Rasa
+                      </p>
+                      
+                      <p className="text-white/70 text-sm mb-2">Thrissur, Kerala, India</p>
+                      
+                      <div className="flex items-center text-white/70 text-sm mb-4">
+                        <span>1K+ followers • 500+ connections</span>
+                      </div>
+                      
+                      {/* Education */}
+                      <div className="flex items-center text-white/70 text-sm mb-4">
+                        <div className="w-4 h-4 bg-gray-400 rounded mr-2 flex items-center justify-center">
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                          </svg>
+                        </div>
+                        <span>University of Calicut MCA CCSIT Thalikullam</span>
+                      </div>
+                    </div>
+                   
+                    {/* Connect Button */}
+                    <a 
+                      href="https://www.linkedin.com/in/suragsunil"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                      <span>Connect on LinkedIn</span>
+                    </a>
+                  </div>
+                </div>
+                
                 <div className="flex space-x-4 mt-2">
                   <a href="#" className="text-white/80 hover:text-white transition-colors duration-200">
                     <User size={20} />

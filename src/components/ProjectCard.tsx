@@ -77,7 +77,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         <div className="flex gap-3">
-          {liveUrl && (
+          {liveUrl && liveUrl !== 'coming-soon' && (
             <a
               href={liveUrl}
               target="_blank"
@@ -85,8 +85,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
             >
               <Link size={16} />
-              Request for Info
+              Live Now
             </a>
+          )}
+          {liveUrl === 'coming-soon' && (
+            <span className="flex items-center gap-1 px-4 py-2 bg-gray-400 text-white rounded-lg cursor-not-allowed">
+              <Link size={16} />
+              Coming Soon
+            </span>
           )}
           {sourceUrl && !dmClicked && (
             <button
