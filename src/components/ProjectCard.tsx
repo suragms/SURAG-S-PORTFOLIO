@@ -6,6 +6,7 @@ interface ProjectCardProps {
   title: string;
   description: string;
   image?: string;
+  logoUrl?: string;
   icon?: React.ReactNode;
   technologies: string[];
   liveUrl?: string;
@@ -16,6 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
   image,
+  logoUrl,
   icon,
   technologies,
   liveUrl,
@@ -47,6 +49,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className="relative overflow-hidden flex items-center justify-center w-full h-48 bg-gray-100">
         {icon ? (
           <span className="text-7xl flex items-center justify-center w-full h-full">{icon}</span>
+        ) : logoUrl ? (
+          <img
+            src={logoUrl}
+            alt={title}
+            className="w-full h-48 object-contain p-6 group-hover:scale-105 transition-transform duration-300"
+          />
         ) : (
           image && (
             <img

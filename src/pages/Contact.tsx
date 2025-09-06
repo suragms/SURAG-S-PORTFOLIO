@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Mail, User, MessageSquare } from 'lucide-react';
 
 const Contact = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -137,7 +141,7 @@ const Contact = () => {
                     {/* Profile Picture */}
                     <div className="mb-4">
                       <img 
-                        src="https://media.licdn.com/dms/image/v2/D5603AQGfl_w7HEkPFQ/profile-displayphoto-scale_400_400/B56ZgmrzbAG0Ag-/0/1752995676420?e=1756944000&v=beta&t=L_a1anZ2TeIe0W3YEFy-s01wPJsO3CuNJscf7A0ATig"
+                        src="https://media.licdn.com/dms/image/v2/D5603AQGfl_w7HEkPFQ/profile-displayphoto-scale_400_400/B56ZgmrzbAG0Ag-/0/1752995676420?e=1759968000&v=beta&t=MKBKszWeYfnPeMGbPuDnIJKvxLmr4yOvFdkfvjq8dnc"
                         alt="Surag M S LinkedIn Profile"
                         className="w-24 h-24 rounded-full border-4 border-white shadow-lg object-cover"
                       />

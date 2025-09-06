@@ -1,46 +1,118 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
 const About = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
       
-      <main className="pt-20">
+      <main>
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                  About Me
+        <section id="about-me" className="relative pt-20 pb-24 bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div className="absolute top-40 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-32 left-40 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+          </div>
+          
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="animate-fade-in">
+                <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-medium text-blue-700 mb-6">
+                  👋 Welcome to my story
+                </div>
+                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+                  About{' '}
+                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Me
+                  </span>
                 </h1>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Hi, I'm Surag M S, a PG MCA graduate and passionate Full Stack Developer with a strong foundation in programming and a growing interest in AI and Machine Learning. I specialize in building intelligent, modern web applications using Python (Django) for the backend and React.js for the frontend.<br/><br/>
-                  I'm the founder of Surag Dev Studio, where I explore and share my learning journey through real-world projects, including AI-powered tools, full-stack apps, and creative UI/UX designs. I love solving real-world problems with code and aim to build applications that are both functional and user-centric.
+                  Hi, I’m <span className="font-semibold text-blue-600">Surag M S</span>—holding a <span className="font-semibold">Master of Computer Applications (MCA)</span> with self‑directed study and hands‑on experience in <span className="font-semibold text-purple-600">AI + Full‑Stack Development</span>. I design and deliver intelligent, production‑ready web applications, leveraging Python (Django) on the backend and React.js on the frontend. My work blends strong software engineering practices with practical applications of machine learning.
                 </p>
-                <div className="flex gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-blue-600">10+</div>
-                    <div className="text-gray-600">Projects</div>
+                <p className="text-lg text-gray-600 mb-10 leading-relaxed">
+                  I lead <span className="font-semibold text-blue-600">Surag Dev Studio</span>, building end‑to‑end solutions—from AI‑powered utilities to modern, responsive interfaces. I focus on translating real‑world problems into reliable, maintainable products that are fast, accessible, and user‑centric.
+                </p>
+                {/* Services + CTAs */}
+                <div className="mb-12">
+                  {/* Availability Note */}
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-50 px-4 py-2 border border-green-200">
+                    <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span className="text-sm font-medium text-green-700">Open to new projects</span>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-blue-600">3+</div>
-                    <div className="text-gray-600">Years</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div className="p-4 bg-white/60 backdrop-blur-sm rounded-lg border border-blue-100">
+                      <p className="text-sm font-medium text-gray-900">AI Solutions</p>
+                      <p className="text-sm text-gray-600">ML models, data pipelines, intelligent features</p>
+                    </div>
+                    <div className="p-4 bg-white/60 backdrop-blur-sm rounded-lg border border-purple-100">
+                      <p className="text-sm font-medium text-gray-900">Full‑Stack Products</p>
+                      <p className="text-sm text-gray-600">Django backends, React frontends, cloud deployment</p>
+                    </div>
+                    <div className="p-4 bg-white/60 backdrop-blur-sm rounded-lg border border-pink-100">
+                      <p className="text-sm font-medium text-gray-900">Consulting & Audits</p>
+                      <p className="text-sm text-gray-600">Architecture, performance, code quality</p>
+                    </div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-blue-600">30+</div>
-                    <div className="text-gray-600">Clients</div>
+                  <div className="flex flex-wrap gap-4">
+                    <a href="/projects" className="inline-flex items-center px-5 py-3 rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg hover:shadow-xl transition-all">
+                      View Projects
+                    </a>
+                    <a href="/contact" className="inline-flex items-center px-5 py-3 rounded-lg border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 transition-all">
+                      Start a Project
+                    </a>
+                    <a href="/contact" className="inline-flex items-center px-5 py-3 rounded-lg text-white bg-green-600 hover:bg-green-700 transition-all">
+                      Book a Consultation
+                    </a>
+                  </div>
+                </div>
+                
+                {/* Enhanced Stats */}
+                <div className="grid grid-cols-3 gap-8 mb-8">
+                  <div className="text-center p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">10+</div>
+                    <div className="text-gray-600 font-medium">Projects</div>
+                  </div>
+                  <div className="text-center p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">5+</div>
+                    <div className="text-gray-600 font-medium">Years Experience</div>
+                  </div>
+                  <div className="text-center p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">30+</div>
+                    <div className="text-gray-600 font-medium">Clients</div>
                   </div>
                 </div>
               </div>
-              <div className="relative">
-                <img
-                  src="/my.webp"
-                  alt="Profile"
-                  className="rounded-2xl shadow-2xl w-full max-w-xl mx-auto border-4 border-white"
-                />
+              
+              <div className="relative animate-fade-in animation-delay-500">
+                <div className="relative">
+                  {/* Decorative elements */}
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 animate-pulse"></div>
+                  <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-20 animate-pulse animation-delay-1000"></div>
+                  
+                  <img
+                    src="/my.webp"
+                    alt="Surag M S - Ai + Full Stack Developer"
+                    className="relative z-10 rounded-3xl shadow-2xl w-full max-w-xl mx-auto border-4 border-white/50 hover:border-white transition-all duration-300 hover:scale-105"
+                  />
+                  
+                  {/* Floating tech badges */}
+                  <div className="absolute top-8 -left-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-full shadow-lg border border-blue-200">
+                    <span className="text-sm font-medium text-blue-600">React.js</span>
+                  </div>
+                  <div className="absolute bottom-8 -right-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-full shadow-lg border border-purple-200">
+                    <span className="text-sm font-medium text-purple-600">Django</span>
+                  </div>
+                  <div className="absolute top-1/2 -left-8 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-full shadow-lg border border-pink-200">
+                    <span className="text-sm font-medium text-pink-600">AI/ML</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

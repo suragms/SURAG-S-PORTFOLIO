@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
 import { BrainCog, Wallet, Gamepad2, Dice5, Globe, Timer, Smartphone, Database, Shield, Palette, Rocket, Code } from 'lucide-react';
 
 const Projects = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleGetInTouchClick = () => {
+    // Scroll to top first, then navigate
+    window.scrollTo(0, 0);
+  };
   const projects = [
+    {
+      title: 'Sura Ai',
+      description: 'A React-based AI assistant integrating Google Gemini API for text generation and insights. Features prompt editing, response streaming, and a clean, responsive UI.',
+      technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Gemini API'],
+      icon: <Rocket size={56} />,
+      liveUrl: 'https://sura-ai.netlify.app/',
+      sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your Sura Ai project integrated with Gemini API. Can you tell me more about it?'
+    },
     {
       title: 'Stress Detection for IT Professionals',
       description: 'An AI-based system that analyzes behavioral and physiological data to detect stress levels. Integrated with a Rasa chatbot for interactive user support and built using a Random Forest classifier.',
@@ -53,7 +70,7 @@ const Projects = () => {
       icon: <Timer size={56} />,
       liveUrl: 'https://screen-time-tracker-app.onrender.com',
       sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your Screen Time Tracker App project. Can you tell me more about it?'
-    }
+    },
   ];
 
   return (
@@ -144,6 +161,7 @@ const Projects = () => {
             </p>
             <a
               href="/contact"
+              onClick={handleGetInTouchClick}
               className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
             >
               Get In Touch

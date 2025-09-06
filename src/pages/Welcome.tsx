@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // LED Ambient Lights Background Component
@@ -19,8 +19,14 @@ const LedAmbientBackground = () => (
   </div>
 );
 
-const Welcome = () => (
-  <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
+const Welcome = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
     <LedAmbientBackground />
     <div className="relative z-10 flex flex-col items-center">
       <h1 className="text-5xl font-bold text-blue-700 mb-6">Welcome to My Portfolio!</h1>
@@ -35,6 +41,7 @@ const Welcome = () => (
       </Link>
     </div>
   </div>
-);
+  );
+};
 
 export default Welcome; 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
@@ -7,7 +7,25 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleGetInTouchClick = () => {
+    // Scroll to top first, then navigate
+    window.scrollTo(0, 0);
+  };
   const featuredProjects = [
+    {
+      title: 'Sura Ai',
+      description: 'A React-based AI assistant integrating Google Gemini API for text generation and insights. Features prompt editing, response streaming, and a clean, responsive UI.',
+      logoUrl: 'https://sura-ai.netlify.app/assets/sura-ai-logo-CG8cTirE.png',
+      icon: '🤖',
+      technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Gemini API'],
+      liveUrl: 'https://sura-ai.netlify.app/',
+      sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your Sura Ai project integrated with Gemini API. Can you tell me more about it?'
+    },
     {
       title: 'Stress Detection for IT Professionals',
       description: 'A stress detection system for IT professionals using physiological and behavioral data.',
@@ -16,15 +34,6 @@ const Index = () => {
       technologies: ['Django', 'scikit-learn', 'SQLite3', 'Rasa'],
       liveUrl: 'https://stress-detection-for-it-professionals.onrender.com',
       sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your Stress Detection for IT Professionals project. Can you tell me more about it?'
-    },
-    {
-      title: 'Enhanced Personal Finance Tracker',
-      description: 'A full-stack application to track, categorize, and visualize income and expenses. Includes bill upload, date-based filtering, and chart-based analysis..',
-      image: 'photo-1611224923853-80b023f02d71',
-      icon: '💰',
-      technologies: ['Django', 'Bootstrap', 'Chart.js', 'SQLite3'],
-      liveUrl: 'https://expensive-tracker-nahn.onrender.com',
-      sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your Enhanced Personal Finance Tracker project. Can you tell me more about it?'
     },
     {
       title: 'Bounce Game',
@@ -188,6 +197,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
+              onClick={handleGetInTouchClick}
               className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
             >
               Get In Touch
