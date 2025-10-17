@@ -12,6 +12,20 @@ const Feedback = () => {
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
 	const [submitted, setSubmitted] = useState(false);
+	const [feedbacks, setFeedbacks] = useState<Array<{ name: string; email: string; message: string; createdAt: string }>>([]);
+
+	// Load existing feedbacks from localStorage
+	useEffect(() => {
+		try {
+			const stored = localStorage.getItem('feedbacks');
+			const parsed = stored ? JSON.parse(stored) : [];
+			if (Array.isArray(parsed)) {
+				setFeedbacks(parsed);
+			}
+		} catch (err) {
+			console.error('Failed to load feedbacks', err);
+		}
+	}, []);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -20,7 +34,9 @@ const Feedback = () => {
 			const stored = localStorage.getItem('feedbacks');
 			const existing: Array<{ name: string; email: string; message: string; createdAt: string }> = stored ? JSON.parse(stored) : [];
 			const newEntry = { name, email, message, createdAt: new Date().toISOString() };
-			localStorage.setItem('feedbacks', JSON.stringify([newEntry, ...existing]));
+			const updated = [newEntry, ...existing];
+			localStorage.setItem('feedbacks', JSON.stringify(updated));
+			setFeedbacks(updated);
 			setSubmitted(true);
 			setName('');
 			setEmail('');
@@ -69,6 +85,24 @@ const Feedback = () => {
 					</div>
 				</div>
 			</section>
+
+			{/* Posted Feedbacks */}
+			{feedbacks.length > 0 && (
+				<section className="py-10 pt-0">
+					<div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+						<h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">What People Have Posted</h2>
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+							{feedbacks.map((fb, idx) => (
+								<div key={idx} className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+									<blockquote className="text-gray-700 italic leading-relaxed mb-4">“{fb.message}”</blockquote>
+									<div className="font-semibold text-gray-900">{fb.name}</div>
+									<div className="text-sm text-gray-500">{new Date(fb.createdAt).toLocaleDateString()}</div>
+								</div>
+							))}
+						</div>
+					</div>
+				</section>
+			)}
 			<Footer />
 		</div>
 	);
