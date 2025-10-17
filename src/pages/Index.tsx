@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
-import TestimonialCard from '../components/TestimonialCard';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
 
 const Index = () => {
   // Scroll to top when component mounts
@@ -17,6 +17,14 @@ const Index = () => {
     window.scrollTo(0, 0);
   };
   const featuredProjects = [
+    {
+      title: 'HeyAuto',
+      description: 'A modern auto rickshaw booking application built for Vadanappally, Kerala. Features real-time tracking, driver management, user authentication, and an admin dashboard with live system metrics.',
+      icon: '🛺',
+      technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Leaflet', 'shadcn/ui'],
+      liveUrl: 'https://heyauto.netlify.app/',
+      sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your HeyAuto project for Vadanappally, Kerala. Can you tell me more about it?'
+    },
     {
       title: 'Sura Ai',
       description: 'A React-based AI assistant integrating Google Gemini API for text generation and insights. Features prompt editing, response streaming, and a clean, responsive UI.',
@@ -46,32 +54,20 @@ const Index = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Product Manager',
-      company: 'TechCorp',
-      content: 'Working with this developer was an absolute pleasure. The attention to detail and quality of work exceeded our expectations.',
-      avatar: 'photo-1511367461989-f85a21fda167',
-      rating: 5
-    },
-    {
-      name: 'Michael Chen',
-      role: 'CEO',
-      company: 'StartupXYZ',
-      content: 'Delivered our project on time and within budget. The code quality is exceptional and the user experience is fantastic.',
-      avatar: 'photo-1472099645785-5658abf4ff4e',
-      rating: 5
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Design Lead',
-      company: 'Creative Agency',
-      content: 'Transformed our designs into pixel-perfect, responsive web applications. Great communication throughout the process.',
-      avatar: 'photo-1438761681033-6461ffad8d80',
-      rating: 5
+  // Load user feedbacks saved via Feedback page
+  const [feedbacks, setFeedbacks] = useState<Array<{ name: string; email: string; message: string; createdAt: string }>>([]);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('feedbacks');
+      const parsed = stored ? JSON.parse(stored) : [];
+      if (Array.isArray(parsed)) {
+        setFeedbacks(parsed);
+      }
+    } catch (err) {
+      console.error('Failed to load feedbacks', err);
     }
-  ];
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -131,19 +127,87 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                title={project.title}
-                description={project.description}
-                image={project.image}
-                technologies={project.technologies}
-                liveUrl={project.liveUrl}
-                sourceUrl={project.sourceUrl}
-                icon={project.icon}
-              />
-            ))}
+          <div className="relative" style={{ perspective: '1200px' }}>
+            <Carousel
+              opts={{ align: 'start', loop: true }}
+              className="w-full"
+              setApi={(api) => {
+                // store api on window for debugging or future hooks if needed
+                (window as any).__featuredCarouselApi = api;
+
+                if (!api) return;
+
+                const updateTransforms = () => {
+                  const selected = api.selectedScrollSnap();
+                  const slideNodes = document.querySelectorAll('[data-3d-slide]') as NodeListOf<HTMLDivElement>;
+                  slideNodes.forEach((node) => {
+                    const idxAttr = node.getAttribute('data-3d-index');
+                    const idx = idxAttr ? parseInt(idxAttr, 10) : 0;
+                    const diff = idx - selected;
+                    const clamped = Math.max(-2, Math.min(2, diff));
+                    const rotateY = clamped * -25;
+                    const translateZ = -Math.abs(clamped) * 80;
+                    const translateX = clamped * 20;
+                    const scale = 1 - Math.abs(clamped) * 0.06;
+                    node.style.transform = `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
+                    node.style.opacity = `${1 - Math.abs(clamped) * 0.15}`;
+                  });
+                };
+
+                api.on('select', updateTransforms);
+                api.on('reInit', updateTransforms);
+                // initial
+                setTimeout(updateTransforms, 0);
+
+                // autoplay
+                let autoplayId: number | null = null;
+                const startAutoplay = () => {
+                  stopAutoplay();
+                  autoplayId = window.setInterval(() => {
+                    api.scrollNext();
+                  }, 3500);
+                };
+                const stopAutoplay = () => {
+                  if (autoplayId) {
+                    clearInterval(autoplayId);
+                    autoplayId = null;
+                  }
+                };
+                startAutoplay();
+                const container = document.querySelector('[aria-roledescription="carousel"]');
+                if (container) {
+                  container.addEventListener('mouseenter', stopAutoplay);
+                  container.addEventListener('mouseleave', startAutoplay);
+                }
+              }}
+            >
+              <CarouselContent>
+                {featuredProjects.map((project, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div
+                      className="transition-transform duration-500 ease-out"
+                      style={{
+                        transformStyle: 'preserve-3d',
+                      }}
+                      data-3d-slide
+                      data-3d-index={index}
+                    >
+                      <ProjectCard
+                        title={project.title}
+                        description={project.description}
+                        image={project.image}
+                        technologies={project.technologies}
+                        liveUrl={project.liveUrl}
+                        sourceUrl={project.sourceUrl}
+                        icon={project.icon}
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="-left-4 md:-left-6" />
+              <CarouselNext className="-right-4 md:-right-6" />
+            </Carousel>
           </div>
           
           <div className="text-center">
@@ -157,7 +221,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Testimonials / Feedback CTA */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -165,22 +229,30 @@ const Index = () => {
               What Clients Say
             </h2>
             <p className="text-xl text-gray-600">
-              Don't just take my word for it - here's what my clients have to say about working with me.
+              I'd love to hear about your experience. Share your feedback to be featured here.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                name={testimonial.name}
-                role={testimonial.role}
-                company={testimonial.company}
-                content={testimonial.content}
-                avatar={testimonial.avatar}
-                rating={testimonial.rating}
-              />
-            ))}
+
+          {/* Render saved feedbacks if any */}
+          {feedbacks.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {feedbacks.map((fb, idx) => (
+                <div key={idx} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <blockquote className="text-gray-700 italic leading-relaxed mb-4">“{fb.message}”</blockquote>
+                  <div className="font-semibold text-gray-900">{fb.name}</div>
+                  <div className="text-sm text-gray-500">{new Date(fb.createdAt).toLocaleDateString()}</div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="flex items-center justify-center mt-8">
+            <Link
+              to="/feedback"
+              className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
+            >
+              Share Your Feedback
+            </Link>
           </div>
         </div>
       </section>

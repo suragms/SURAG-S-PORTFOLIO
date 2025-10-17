@@ -269,8 +269,8 @@ const About = () => {
                     2023 – 2025
                   </div>
                   <div className="flex-grow">
-                    <h3 className="text-xl font-semibold text-gray-900">Postgraduate Student – MCA</h3>
-                    <p className="text-blue-600 font-medium mb-2">CCSIT Thalikulam, Calicut University</p>
+                    <h3 className="text-xl font-semibold text-gray-900">Postgraduate Student – MCA 🎓</h3>
+                    <p className="text-blue-600 font-medium mb-2">University of Calicut, CCSIT Thalikulam — First Class with Distinction (CGPA: 8.21)</p>
                     <ul className="list-disc list-inside text-gray-600 space-y-1">
                       <li>Advanced coursework in AI, ML, Web Technologies, Data Science, Cryptography, Compiler Design, and more</li>
                       <li>Specialization: Machine Learning & Data Science </li>
@@ -290,9 +290,10 @@ const About = () => {
                     2019 – 2022
                   </div>
                   <div className="flex-grow">
-                    <h3 className="text-xl font-semibold text-gray-900">Undergraduate Student – BCA</h3>
+                    <h3 className="text-xl font-semibold text-gray-900">Undergraduate Student – BCA 🎓</h3>
                     <p className="text-blue-600 font-medium mb-2">SNGC Nattika, Calicut University</p>
                     <ul className="list-disc list-inside text-gray-600 space-y-1">
+                      <li>Graduated BCA with First Class (B+ Grade), 140 credits, GPA 8.0 (~76%) — First Class under Calicut University</li>
                       <li>Developed core understanding of programming fundamentals, data structures, and web development</li>
                       <li>Participated in college-level tech fests, coding challenges, and workshops</li>
                       <li>Built early mini-projects that laid the foundation for current technical expertise</li>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
-import { BrainCog, Wallet, Gamepad2, Dice5, Globe, Timer, Smartphone, Database, Shield, Palette, Rocket, Code } from 'lucide-react';
+import { BrainCog, Wallet, Gamepad2, Dice5, Globe, Timer, Smartphone, Database, Shield, Palette, Rocket, Code, CarFront } from 'lucide-react';
 
 const Projects = () => {
   // Scroll to top when component mounts
@@ -15,6 +15,14 @@ const Projects = () => {
     window.scrollTo(0, 0);
   };
   const projects = [
+    {
+      title: 'HeyAuto',
+      description: 'A modern auto rickshaw booking application built for Vadanappally, Kerala. Features real-time tracking, driver management, user authentication, and an admin dashboard with live system metrics.',
+      technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Leaflet', 'shadcn/ui'],
+      icon: <CarFront size={56} />,
+      liveUrl: 'https://heyauto.netlify.app/',
+      sourceUrl: 'https://www.instagram.com/surag_sunil?message=Hi! I\'m interested in your HeyAuto project for Vadanappally, Kerala. Can you tell me more about it?'
+    },
     {
       title: 'Sura Ai',
       description: 'A React-based AI assistant integrating Google Gemini API for text generation and insights. Features prompt editing, response streaming, and a clean, responsive UI.',
