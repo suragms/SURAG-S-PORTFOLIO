@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
+import { getFeedbacks } from '../lib/feedbackStore';
 
 const Index = () => {
   // Scroll to top when component mounts
@@ -58,15 +59,9 @@ const Index = () => {
   const [feedbacks, setFeedbacks] = useState<Array<{ name: string; email: string; message: string; createdAt: string }>>([]);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem('feedbacks');
-      const parsed = stored ? JSON.parse(stored) : [];
-      if (Array.isArray(parsed)) {
-        setFeedbacks(parsed);
-      }
-    } catch (err) {
-      console.error('Failed to load feedbacks', err);
-    }
+    getFeedbacks()
+      .then((items) => setFeedbacks(items))
+      .catch((err) => console.error('Failed to load feedbacks', err));
   }, []);
 
   return (

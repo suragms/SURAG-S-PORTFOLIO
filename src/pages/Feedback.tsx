@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import { addFeedback, getFeedbacks } from '../lib/feedbackStore';
 
 const Feedback = () => {
 	// Scroll to top when component mounts
@@ -14,29 +15,20 @@ const Feedback = () => {
 	const [submitted, setSubmitted] = useState(false);
 	const [feedbacks, setFeedbacks] = useState<Array<{ name: string; email: string; message: string; createdAt: string }>>([]);
 
-	// Load existing feedbacks from localStorage
+	// Load existing feedbacks (API or localStorage)
 	useEffect(() => {
-		try {
-			const stored = localStorage.getItem('feedbacks');
-			const parsed = stored ? JSON.parse(stored) : [];
-			if (Array.isArray(parsed)) {
-				setFeedbacks(parsed);
-			}
-		} catch (err) {
-			console.error('Failed to load feedbacks', err);
-		}
+		getFeedbacks()
+			.then((items) => setFeedbacks(items))
+			.catch((err) => {
+				console.error('Failed to load feedbacks', err);
+			});
 	}, []);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		// Persist feedback locally; integrate backend later if needed
 		try {
-			const stored = localStorage.getItem('feedbacks');
-			const existing: Array<{ name: string; email: string; message: string; createdAt: string }> = stored ? JSON.parse(stored) : [];
-			const newEntry = { name, email, message, createdAt: new Date().toISOString() };
-			const updated = [newEntry, ...existing];
-			localStorage.setItem('feedbacks', JSON.stringify(updated));
-			setFeedbacks(updated);
+			const saved = await addFeedback({ name, email, message });
+			setFeedbacks((prev) => [saved, ...prev]);
 			setSubmitted(true);
 			setName('');
 			setEmail('');
